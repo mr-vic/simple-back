@@ -10,8 +10,10 @@ const DB_URL = process.env.DB_URL || '';
 const app = express();
 
 app.use(express.json());
+// for static images
+app.use(express.static('static'));
+app.use(fileUpload({}));
 app.use('/api', router);
-app.use(fileUpload());
 
 async function startApp() {
   try {
